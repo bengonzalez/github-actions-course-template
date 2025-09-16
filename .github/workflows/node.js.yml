@@ -8,7 +8,21 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Deployment Environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+      message:
+        description: 'Custom message for the run'
+        required: false
+        type: string
+        default: 'Triggered via workflow_dispatch'
 jobs:
   build:
 
